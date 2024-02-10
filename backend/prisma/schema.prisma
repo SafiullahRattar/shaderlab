@@ -1,0 +1,22 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Shader {
+  id           Int      @id @default(autoincrement())
+  title        String
+  description  String
+  glslCode     String
+  tags         String   @default("")
+  category     String   @default("General")
+  author       String   @default("Anonymous")
+  thumbnailUrl String?
+  starsCount   Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
