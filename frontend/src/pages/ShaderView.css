@@ -1,0 +1,362 @@
+.shader-view {
+  padding: 24px 0;
+}
+
+.shader-view-error {
+  text-align: center;
+  padding: 64px 0;
+  color: var(--danger);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.shader-preview-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: 70vh;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #0a0a14;
+  margin-bottom: 28px;
+}
+
+.shader-gl-error {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  padding: 10px 16px;
+  background: rgba(20, 5, 5, 0.95);
+  border: 1px solid var(--danger);
+  border-radius: var(--radius-md);
+  color: var(--danger);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.5;
+  backdrop-filter: blur(8px);
+}
+
+.shader-gl-error-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--danger);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  margin-right: 8px;
+}
+
+.shader-info {
+  max-width: 900px;
+}
+
+.shader-info-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.shader-info-title {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.shader-info-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.shader-info-desc {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.shader-info-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  font-size: 13px;
+}
+
+.shader-info-category {
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--accent-dim);
+  color: var(--accent);
+  font-weight: 500;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.shader-info-author {
+  color: var(--text-muted);
+}
+
+.shader-info-date {
+  color: var(--text-muted);
+}
+
+.shader-info-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 28px;
+}
+
+.shader-info-tag {
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+}
+
+.shader-code-section {
+  margin-top: 28px;
+}
+
+.shader-code-heading {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.shader-code-block {
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.shader-code-block code {
+  font-family: inherit;
+}
+
+/* Syntax highlighting */
+.glsl-kw {
+  color: #c792ea;
+}
+.glsl-builtin {
+  color: #82aaff;
+}
+.glsl-num {
+  color: #f78c6c;
+}
+.glsl-comment {
+  color: #546e7a;
+  font-style: italic;
+}
+
+/* Edit form */
+.shader-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.shader-edit-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.shader-edit-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.shader-edit-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.form-label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.form-input {
+  padding: 10px 14px;
+  font-size: 14px;
+}
+
+.form-textarea {
+  padding: 10px 14px;
+  font-size: 14px;
+  resize: vertical;
+  min-height: 80px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-error {
+  font-size: 13px;
+  color: var(--danger);
+  padding: 8px 0;
+}
+
+/* Code editor with syntax overlay */
+.code-editor-wrapper {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg-input);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.code-editor-wrapper:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+
+.code-editor {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.7;
+  color: transparent;
+  caret-color: var(--accent);
+  background: transparent;
+  resize: vertical;
+  position: relative;
+  z-index: 2;
+  white-space: pre;
+  overflow-wrap: normal;
+  overflow-x: auto;
+}
+
+.code-editor:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.code-editor-highlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 16px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  white-space: pre;
+  overflow-wrap: normal;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+  background: transparent;
+}
+
+.code-editor-highlight code {
+  font-family: inherit;
+}
+
+/* Buttons */
+.btn-primary {
+  padding: 9px 20px;
+  background: var(--accent);
+  color: #000;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--accent-soft);
+  box-shadow: 0 0 16px var(--accent-glow);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  padding: 9px 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.btn-secondary:hover {
+  border-color: var(--border-hover);
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.btn-danger {
+  padding: 9px 20px;
+  border: 1px solid var(--danger);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--danger);
+  transition: all var(--transition-fast);
+}
+
+.btn-danger:hover:not(:disabled) {
+  background: rgba(255, 77, 106, 0.1);
+  box-shadow: 0 0 16px var(--danger-glow);
+}
+
+.btn-danger:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .shader-info-header {
+    flex-direction: column;
+  }
+  .shader-info-title {
+    font-size: 22px;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
