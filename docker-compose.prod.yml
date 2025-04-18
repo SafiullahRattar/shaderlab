@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.prod
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.prod
+    ports:
+      - "3001:3001"
+    volumes:
+      - backend-data:/app/data
+    environment:
+      - DATABASE_URL=file:/app/data/prod.db
+      - PORT=3001
+      - NODE_ENV=production
+    restart: unless-stopped
+
+volumes:
+  backend-data:
